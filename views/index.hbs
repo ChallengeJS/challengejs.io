@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Test</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+    <script src="//code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script>window.challenge = {
+      code: {{{code}}},
+      id: "{{{id}}}"
+    };
+    </script>
+  </head>
+
+  <body>
+    <h4 class="challengeName">{{name}}</h4>
+
+    <div class="challengeDescription">
+      <h5>Desciption</h5>
+      I am a machine. I give back money in the form of coins as the remainder of a purchase.
+      My goal is to return the fewest number of coins to make up that remainder.
+
+      <div class="example>">
+        I am told to dispense USD $0.42.<br/>
+        I would return:<br/>
+        1 Quarter (.25)<br/>
+        1 Dime (.10)<br/>
+        1 Nickel (.05)<br/>
+        2 Pennies (.01)<br/>
+      </div>
+    </div>
+
+    <div class="challengeInstructions">
+      <h5>Instructions</h5>
+      Write a function that takes in 2 arguments.<br/>
+
+      Arg 1:  An integer between 1 and 99 (assume it's prevalidated)<br/>
+
+      Arg 2: An array of available coins sorted from highest value to lowest value.<br/>
+      Our tests will assume that we have a structure like so.<br/>
+
+<pre class="code">
+[
+  {denomination: "quarter", value: 25},
+  {denomination: "dime", value: 10}
+  {denomination: "nickel", value: 5}
+  {denomination: "penny", value: 1}
+]
+</pre>
+
+      You should return an object with the following structure.
+
+<pre class="code">
+{
+  quarter: 1,
+  dime: 1,
+  nickel: 1,
+  penny: 2
+}
+</pre>
+
+        There should be no empty keys!
+    </div>
+
+    <div id="app">
+      <button type="submit" id="entry">Run! (Shift + Enter)</button>
+      <div id="editor"></div>
+    </div>
+
+    <div class="challengeResults">
+
+      Expected:
+<pre class="code">
+{
+  quarter: 1,
+  dime: 1,
+  nickel: 1,
+  penny: 2
+}
+</pre>
+
+      Got:
+<pre class="code">
+{
+  quarter: 1,
+  dime: 1,
+  nickel: 1,
+  penny: 2
+}
+</pre>
+
+    </div>
+
+    <iframe
+      id="contentFrame"
+      src="/embed/{{{id}}}"
+      height="1"
+      width="1"
+      frameBorder="0">
+    </iframe>
+
+    <script src="/static/application.bundle.js"></script>
+  </body>
+</html>
