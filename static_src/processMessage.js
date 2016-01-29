@@ -13,6 +13,12 @@ function onResultRecieved(fn) {
 $(window).on('message', event => {
   const e = event.originalEvent;
   console.log('got a post message from', e.origin);
-  console.log('message body is', e.data);
-  listeners.forEach(fn => fn(e.data.message));
+  var msg = e.data.message;
+  try {
+    msg = JSON.parse(msg);
+  } catch(e) {
+    console.error('msg is not valid json');
+    return;
+  }
+  listeners.forEach(fn => fn(msg));
 });

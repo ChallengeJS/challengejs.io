@@ -13,53 +13,31 @@
   </head>
 
   <body>
-    <h4 class="challengeName">{{name}}</h4>
+    <h4 class="challengeName">Count my money!</h4>
 
     <div class="challengeDescription">
-      <h5>Desciption</h5>
-      I am a machine. I give back money in the form of coins as the remainder of a purchase.
-      My goal is to return the fewest number of coins to make up that remainder.
-
+      <h5>Description</h5>
+        I would like a function that takes a string that describes an integer value and returns that integer.
+        This string will contain only number words, no punctuation or joiners. No 'and' or dashes.
       <div class="example>">
-        I am told to dispense USD $0.42.<br/>
-        I would return:<br/>
-        1 Quarter (.25)<br/>
-        1 Dime (.10)<br/>
-        1 Nickel (.05)<br/>
-        2 Pennies (.01)<br/>
+        I give you 'one hundred three'.<br />
+        You will return 103</br>
+
+        I give you 'five hundred twenty seven'</br>
+        You will return 527.
       </div>
+
+        Challenge mode:  Write a function that handles numbers from 0 to 999.</br>
+        Bonus mode: Write a function that handles numbers up to 999 million</br>
+        Hard mode: Satisfy the bonus mode and allow for decimal values described only as 1-9 digits. (one hundred point zero two three = 100.023)
     </div>
 
     <div class="challengeInstructions">
       <h5>Instructions</h5>
-      Write a function that takes in 2 arguments.<br/>
+      Write a function named 'transcribe' that takes 1 string argument and returns an integer.<br/>
 
-      Arg 1:  An integer between 1 and 99 (assume it's prevalidated)<br/>
+      Arg 1: A string describing the number to output<br/>
 
-      Arg 2: An array of available coins sorted from highest value to lowest value.<br/>
-      Our tests will assume that we have a structure like so.<br/>
-
-<pre class="code">
-[
-  {denomination: "quarter", value: 25},
-  {denomination: "dime", value: 10}
-  {denomination: "nickel", value: 5}
-  {denomination: "penny", value: 1}
-]
-</pre>
-
-      You should return an object with the following structure.
-
-<pre class="code">
-{
-  quarter: 1,
-  dime: 1,
-  nickel: 1,
-  penny: 2
-}
-</pre>
-
-        There should be no empty keys!
     </div>
 
     <div id="app">
@@ -67,28 +45,10 @@
       <div id="editor"></div>
     </div>
 
-    <div class="challengeResults">
-
-      Expected:
-<pre class="code">
-{
-  quarter: 1,
-  dime: 1,
-  nickel: 1,
-  penny: 2
-}
-</pre>
-
-      Got:
-<pre class="code">
-{
-  quarter: 1,
-  dime: 1,
-  nickel: 1,
-  penny: 2
-}
-</pre>
-
+    <div id="challengeResults">
+        <div id="challengeModeResult"></div>
+        <div id="bonusModeResult"></div>
+        <div id="hardModeResult"></div>
     </div>
 
     <iframe

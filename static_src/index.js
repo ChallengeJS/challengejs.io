@@ -3,18 +3,19 @@ const $ = require('jquery');
 const process = require('./processMessage');
 const {editor} = require('./editor');
 
-function submitCode() {
-  sendResponse(getCode(), refreshFrame);
-}
 
+editor.onSubmit(submitCode);
 $('#entry').click(function(e) {
   e.preventDefault();
   submitCode();
 });
+process.onResult(printResults);
 
-editor.onSubmit(submitCode);
+function submitCode() {
+  sendResponse(getCode(), refreshFrame);
+}
 
-function getCode(form) {
+function getCode() {
   return {
     code: editor.getValue()
   }
@@ -31,4 +32,32 @@ function sendResponse(formData, afterEffect) {
 function refreshFrame() {
   var frame = $('#contentFrame');
   frame.attr('src', `/embed/${challenge.id}?${Math.random()}`);
+}
+
+
+function printResults(results) {
+  var levels = ['challenge', 'bonus', 'hard'];
+  var wrapper = $('#challengeResults');
+  console.log('got results', results);
+
+  levels.forEach(function(lvl) {
+    var res = results[lvl];
+    console.log('level', lvl);
+    wrapper.append(makeChallengeGroup(res, lvl));
+  });
+}
+
+function makeChallengeGroup(group, lvl) {
+  if (!group) {
+    console.log('group is undefined');
+    return 'There was an error!'
+  }
+  return $('<div class="challenge-group"><div class="group-heading">' + lvl + '</div></div>')
+      .addClass(group.pass ? 'challenge-pass' : 'challenge-fail')
+      .append(group.errors.map(makeTestLine));
+}
+
+function makeTestLine( msg) {
+  return $('<div class="challenge-answer" />')
+      .text(msg);
 }
