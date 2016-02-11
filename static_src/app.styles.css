@@ -1,0 +1,66 @@
+/* Nav Overrides */
+
+nav {
+  color: rgba(0,0,0,0.87);
+  background-color: white;
+}
+
+nav .brand-logo {
+  color: rgba(0,0,0,0.87);
+  position: inherit;
+}
+
+.nav-blurb {
+  display: inline-block;
+
+}
+
+/* end Nav Overrides */
+
+
+.CodeMirror {
+  height: calc(100vh - 180px)
+}
+
+#editor {
+  margin-top: 15px;
+  min-height: calc(100vh - 180px);
+}
+
+#entry-btn {
+  margin-top: 10px;
+}
+
+.example {
+  background-color: #f5f2f0;
+}
+
+
+.completion-mode {
+  padding: 5px;
+}
+
+.completion-name {
+  color: white;
+  background: rgba(0,0,0,0.87);
+  border-radius: 4px;
+  padding: 2px;
+}
+
+
+/* Result formatting */
+.result-group, .completion-mode, .challenge-group {
+  margin-top: 6px;
+}
+
+.group-heading {
+  text-transform: uppercase;
+}
+
+.challenge-pass .group-heading {
+  color: green;
+}
+
+.challenge-fail .group-heading {
+  color: red;
+}

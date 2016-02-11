@@ -1,8 +1,9 @@
 const $ = require('jquery');
 const CodeMirror = require('codemirror');
 require('codemirror/lib/codemirror.css');
-require('codemirror/theme/dracula.css');
+require('codemirror/theme/material.css');
 require('codemirror/mode/javascript/javascript');
+
 
 let submitListeners = [];
 function addSubmitListener(fn) {
@@ -16,7 +17,7 @@ function triggerSubmitListeners() {
 let mirror = CodeMirror(document.querySelector('#editor'), {
   mode: 'javascript',
   lineNumbers: true,
-  theme: 'dracula',
+  theme: 'material',
   value: window.challenge.code,
   extraKeys: {
     'Shift-Enter': triggerSubmitListeners

@@ -1,3 +1,5 @@
+"use strict";
+
 const express = require('express');
 const hbs = require('express-hbs');
 const http = require('http');
@@ -27,12 +29,6 @@ app.use(expressSession({
 app.use(require('body-parser').json());
 app.use('/static', express.static('static'));
 
-app.use(function(req, res, next) {
-  if (!req.session.owner_id) {
-    req.session.owner_id = randomstring.generate(12);
-  }
-  next();
-});
 
 
 const SubmissionModel = require('./models/submissionModel');
@@ -46,11 +42,7 @@ const challengeData = {
 
 app.get('/:id?', function(req, res) {
   const sub_id = req.params.id || req.session.submission_id;
-  if (req.params.id || req.params.id !== req.session.submission_id) {
-    req.session.read_only = true;
-  } else {
-    req.session.read_only = false;
-  }
+  req.session.read_only = !!(req.params.id || req.params.id !== req.session.submission_id)
 
   const defaultPackage = {
     code: JSON.stringify(challengeData.defaultCode),
@@ -59,7 +51,10 @@ app.get('/:id?', function(req, res) {
   };
 
   if (!sub_id) {
-    return res.render('index', defaultPackage);
+    const sub = new SubmissionModel();
+    return sub.save().then(()=> {
+      res.redirect(`/${sub.id}`);
+    });
   }
 
   SubmissionModel.findById(sub_id)

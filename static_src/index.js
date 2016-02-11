@@ -1,8 +1,8 @@
-
 const $ = require('jquery');
 const process = require('./processMessage');
 const {editor} = require('./editor');
 
+require('./app.styles.css');
 
 editor.onSubmit(submitCode);
 $('#entry').click(function(e) {
@@ -37,12 +37,12 @@ function refreshFrame() {
 
 function printResults(results) {
   var levels = ['challenge', 'bonus', 'hard'];
-  var wrapper = $('#challengeResults');
+  var wrapper = $('#challengeResults').empty();
   console.log('got results', results);
 
   levels.forEach(function(lvl) {
     var res = results[lvl];
-    console.log('level', lvl);
+
     wrapper.append(makeChallengeGroup(res, lvl));
   });
 }

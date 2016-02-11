@@ -3,8 +3,9 @@
 <html>
   <head>
     <title>Test</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
     <link rel="stylesheet" href="/static/styles.css" />
-    <script src="//code.jquery.com/jquery-2.2.0.min.js"></script>
+
     <script>window.challenge = {
       code: {{{code}}},
       id: "{{{id}}}"
@@ -13,42 +14,73 @@
   </head>
 
   <body>
-    <h4 class="challengeName">Count my money!</h4>
+    <div class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper">
+          <a href="#!" class="brand-logo">ChallengeJS</a>
+          <span class="nav-blurb">Your weekly JS challenge!</span>
+        </div>
+      </nav>
+    </div>
 
-    <div class="challengeDescription">
-      <h5>Description</h5>
-        I would like a function that takes a string that describes an integer value and returns that integer.
-        This string will contain only number words, no punctuation or joiners. No 'and' or dashes.
-      <div class="example>">
-        I give you 'one hundred three'.<br />
-        You will return 103</br>
+    <div class="row">
+      <div class="col s3">
+        <h4 class="challengeName">Human to Machine!</h4>
+        <div class="challengeDescription">
+          <h5>Description</h5>
+            I would like a function that takes a string that describes an integer value and returns that integer.
+            This string will contain only number words, no punctuation or joiners. No 'and' or dashes.
+          <div class="example">
+            <p>
+              I give you 'one hundred three'.<br />
+              You will return 103</br>
+            </p>
 
-        I give you 'five hundred twenty seven'</br>
-        You will return 527.
+            <p>
+              I give you 'five hundred twenty seven'</br>
+              You will return 527.
+            </p>
+          </div>
+        </div>
+
+        <div class="challengeInstructions">
+          <h5>Instructions</h5>
+          Write a function named 'transcribe' that takes 1 string argument and returns an integer.
+
+          <div class="argument">Arg 1: A string describing the number to output</div>
+
+          <div class="completion-criterion">
+            <div class="completion-mode">
+              <div class="completion-name">Challenge Mode</div>
+              Write a function that handles numbers from 0 to 999.
+            </div>
+
+            <div class="completion-mode">
+              <div class="completion-name">Bonus Mode</div>
+              Write a function that handles numbers up to 999 million
+            </div>
+
+            <div class="completion-mode">
+              <div class="completion-name">Hard Mode</div>
+              Satisfy the bonus mode and allow for decimal values described only as 1-9 digits. (one hundred point zero two three = 100.023)
+            </div>
+          </div>
+        </div>
       </div>
 
-        Challenge mode:  Write a function that handles numbers from 0 to 999.</br>
-        Bonus mode: Write a function that handles numbers up to 999 million</br>
-        Hard mode: Satisfy the bonus mode and allow for decimal values described only as 1-9 digits. (one hundred point zero two three = 100.023)
-    </div>
+      <div class="col s6">
+        <div id="editor" class="z-depth-3"></div>
+        <button type="submit" class="waves-effect waves-light btn" id="entry-btn">Run! (Shift + Enter)</button>
+      </div>
 
-    <div class="challengeInstructions">
-      <h5>Instructions</h5>
-      Write a function named 'transcribe' that takes 1 string argument and returns an integer.<br/>
-
-      Arg 1: A string describing the number to output<br/>
-
-    </div>
-
-    <div id="app">
-      <button type="submit" id="entry">Run! (Shift + Enter)</button>
-      <div id="editor"></div>
-    </div>
-
-    <div id="challengeResults">
-        <div id="challengeModeResult"></div>
-        <div id="bonusModeResult"></div>
-        <div id="hardModeResult"></div>
+      <div class="col s3">
+        <h4>Results!</h4>
+        <div id="challengeResults">
+          <div id="challengeModeResult" class="result-group"></div>
+          <div id="bonusModeResult" class="result-group"></div>
+          <div id="hardModeResult" class="result-group"></div>
+        </div>
+      </div>
     </div>
 
     <iframe
@@ -59,6 +91,8 @@
       frameBorder="0">
     </iframe>
 
+    <script src="//code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
     <script src="/static/application.bundle.js"></script>
   </body>
 </html>
